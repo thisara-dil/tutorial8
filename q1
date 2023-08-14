@@ -1,0 +1,18 @@
+object q1 {
+    def main(args: Array[String]): Unit = {
+      println("Enter the deposited amount :")
+      val depositAmount: Double = scala.io.StdIn.readDouble()
+      val interestAmount: Double = calculateInterest(depositAmount)
+      println("Interest Amount: " + interestAmount)
+    }
+
+    def calculateInterest: Double => Double = (depositAmount: Double) => {
+      val interestRate: Double = depositAmount match {
+        case amount if amount <= 20000 => 0.02
+        case amount if amount <= 200000 => 0.04
+        case amount if amount <= 2000000 => 0.035
+        case _ => 0.065
+      }
+      depositAmount * interestRate
+    }
+  }
